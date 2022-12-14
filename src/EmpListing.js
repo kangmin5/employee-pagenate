@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Pagination from './Pagination'
 
 const EmpListing = () => {
-    const [empData, setEmpData] = useState(null)
+    const [empData, setEmpData] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [cardPerPage] = useState(5)
 
     const navigate = useNavigate();
 
@@ -30,8 +33,6 @@ const EmpListing = () => {
         }
     }
 
-
-
     useEffect(() => {
         fetch('http://localhost:8000/employee').then((res) => {
             return res.json()
@@ -43,6 +44,14 @@ const EmpListing = () => {
                 console.log(err.message)
             })
     }, [])
+
+    //현재 페이지 찾기
+    const indexOfLastCard = currentPage * cardPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardPerPage;
+    const currentCard = empData.slice(indexOfFirstCard, indexOfLastCard);
+
+    // 페이지 변경하기
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     return (
         <div className='container'>
@@ -65,7 +74,7 @@ const EmpListing = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {empData?.map((item) => (
+                            {currentCard?.map((item) => (
                                 <tr key={item.id}>
                                     <td>{item.id}</td>
                                     <td>{item.name}</td>
@@ -81,6 +90,9 @@ const EmpListing = () => {
                             )}
                         </tbody>
                     </table>
+                    <div className='pagination'>
+                        <Pagination cardPerPage={cardPerPage} totalCard={empData.length} paginate={paginate} />
+                    </div>
                 </div>
             </div>
         </div >
