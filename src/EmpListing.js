@@ -4,6 +4,7 @@ import Pagination from './Pagination'
 
 const EmpListing = () => {
     const [empData, setEmpData] = useState([])
+    //페이지 관련 2줄
     const [currentPage, setCurrentPage] = useState(1)
     const [cardPerPage] = useState(5)
 
