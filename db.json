@@ -1,0 +1,86 @@
+{
+  "employee": [
+    {
+      "id": 1,
+      "name": "강민",
+      "email": "mk@kangmin.kr",
+      "phone": "010-2066-2242"
+    },
+    {
+      "id": 2,
+      "name": "홍길동",
+      "email": "hdd@test.com",
+      "phone": "010-3093-3939",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "오메가",
+      "email": "tett@dkdk.com",
+      "phone": "01022223333"
+    },
+    {
+      "id": 4,
+      "name": "박찬구",
+      "email": "cgpark@core.com",
+      "phone": "010292934949",
+      "active": true
+    },
+    {
+      "name": "박성구",
+      "email": "sgpark@corestone.co.kr",
+      "phone": "010-4340-4494",
+      "active": true,
+      "id": 5
+    },
+    {
+      "name": "정윤지",
+      "email": "ddk@dkdkdk.com",
+      "phone": "01930394949",
+      "active": true,
+      "id": 6
+    },
+    {
+      "name": "이순신",
+      "email": "dkdj@dkjfdkfj.com",
+      "phone": "03394943303",
+      "active": true,
+      "id": 7
+    },
+    {
+      "name": "태연",
+      "email": "dkdk@dfjdkf.com",
+      "phone": "4949349304930",
+      "active": true,
+      "id": 8
+    },
+    {
+      "name": "블랙핑크",
+      "email": "dkfjdk@dkjadfa.com",
+      "phone": "9494039393",
+      "active": true,
+      "id": 9
+    },
+    {
+      "name": "티아라",
+      "email": "llsfkdfjd@dfjkdfa.com",
+      "phone": "03034849303",
+      "active": true,
+      "id": 10
+    },
+    {
+      "name": "조아람",
+      "email": "orir@dkfjsdlkf.com",
+      "phone": "040304049933",
+      "active": true,
+      "id": 11
+    },
+    {
+      "name": "허부사장",
+      "email": "roro@dfakdjc.com",
+      "phone": "505-40440343",
+      "active": true,
+      "id": 12
+    }
+  ]
+}
