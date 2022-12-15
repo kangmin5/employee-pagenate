@@ -51,8 +51,7 @@ const EmpCreate = () => {
                                     <div className='col-lg-12'>
                                         <div className='form-group'>
                                             <label>성명</label>
-                                            <input required value={name} onMouseDown={e=>setValidation(true)} onChange={e=>setName(e.target.value)} className='form-control'></input>
-                                            {name.length === 0 && validation && <span className='text-danger'>이름을 입력하세요.</span>}
+                                            <input required value={name} onChange={e=>setName(e.target.value)} className='form-control'></input>
                                         </div>
                                     </div>
                                     
@@ -66,8 +65,7 @@ const EmpCreate = () => {
                                     <div className='col-lg-12'>
                                         <div className='form-group'>
                                             <label>휴대번호</label>
-                                            <input value={phone} onMouseDown={e=>setValidation(true)}  onChange={e=>setPhone(e.target.value)} className='form-control' ></input>
-                                            {phone.length === 0 && validation &&<span className='text-danger'>숫자만 입력하세요</span>}
+                                            <input value={phone}  onChange={e=>setPhone(e.target.value)} className='form-control' ></input>
                                         </div>
                                     </div>
                                     
