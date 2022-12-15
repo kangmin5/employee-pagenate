@@ -6,14 +6,18 @@ const EmpCreate = () => {
     const [name,setName] = useState("")
     const [email,setEmail] = useState("")
     const [phone,setPhone] = useState("")
+    const [date,setDate] = useState("")
     const [active,setActive] = useState(true)
     const [validation,setValidation] = useState(false)
 
     const navigate = useNavigate();
 
+    const current = new Date();
+    const today = current.toLocaleString('ko-kr')
+
     const handleSubmit=(e)=>{
         e.preventDefault();
-        const empData = {name,email,phone,active};
+        const empData = {name,email,phone,date,active};
 
         fetch("http://localhost:8000/employee",{
             method: "POST",
@@ -68,13 +72,21 @@ const EmpCreate = () => {
                                             <input value={phone}  onChange={e=>setPhone(e.target.value)} className='form-control' ></input>
                                         </div>
                                     </div>
+
+                                    <div className='col-lg-12'>
+                                        <div className='form-group'>
+                                            <label>작성일</label>
+                                            <input value={date}  onChange={e=>setDate(today)} className='form-control' placeholder='아무키나 누르시면 [현재시각]을 가져옵니다.'></input>
+                                        </div>
+                                    </div>
                                     
                                     <div className='col-lg-12'>
                                         <div className='form-check'>
                                             <input checked={active} onChange={e=>setActive(e.target.checked)} type="checkbox" className='form-check-input'></input>
-                                            <label className='form-check-lable'>재직 확인</label>
+                                            <label className='form-check-lable'>퇴사자</label>
                                         </div>
                                     </div>
+                                    
                                     
                                     <div className='col-lg-12'>
                                         <div className='form-group'>

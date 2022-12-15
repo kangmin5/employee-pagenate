@@ -18,7 +18,7 @@ const EmpListing = () => {
     }
     const RemoveFunction = (id) => {
         if (window.confirm('정말 삭제 하시겠습니까?')) {
-            // const empData = { id, name, email, phone, active };
+            // const empData = { id, name, email, phone,date, active };
 
             fetch("http://localhost:8000/employee/" + id, {
                 method: "DELETE",
@@ -71,16 +71,21 @@ const EmpListing = () => {
                                 <td>이름</td>
                                 <td>이메일</td>
                                 <td>휴대번호</td>
-                                <td>활동유무</td>
+                                <td>작성일</td>
+                                <td>메뉴</td>
                             </tr>
                         </thead>
                         <tbody>
-                            {currentCard?.map((item) => (
-                                <tr key={item.id}>
+                            { currentCard &&
+                                currentCard
+                                .sort((a,b) => a.date - b.date)
+                                .map((item) => (
+                                <tr key={item.date}>
                                     <td>{item.id}</td>
                                     <td>{item.name}</td>
                                     <td>{item.email}</td>
                                     <td>{item.phone}</td>
+                                    <td>{item.date}</td>
                                     <td>
                                         <a onClick={() => LoadEdit(item.id)} className='btn btn-success'>수정</a>
                                         <a onClick={() => RemoveFunction(item.id)} className='btn btn-danger'>삭제</a>

@@ -12,6 +12,8 @@ const EmpEdit = () => {
       setId(resp.id)
       setName(resp.name)
       setEmail(resp.email)
+      setPhone(resp.phone)
+      setDate(resp.date)
       setActive(resp.isactive)
     }).catch((err) => {
       console.error(err.message)
@@ -22,12 +24,17 @@ const EmpEdit = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
+  const [date, setDate] = useState("")
   const [active, setActive] = useState(true)
   const [validation, setValidation] = useState(false)
 
+  const current = new Date();
+  const today = current.toLocaleString('ko-kr')
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const empData = { id, name, email, phone, active };
+
+    const empData = {id,name,email,phone,date,active};
 
     fetch("http://localhost:8000/employee/" + empId, {
       method: "PUT",
@@ -56,36 +63,43 @@ const EmpEdit = () => {
                   <div className='col-lg-12'>
                     <div className='form-group'>
                       <label>ID</label>
-                      <input value={id ||""} disabled="disabled" className='form-control'></input>
+                      <input value={id || ""} disabled="disabled" className='form-control'></input>
                     </div>
                   </div>
 
                   <div className='col-lg-12'>
                     <div className='form-group'>
                       <label>성명</label>
-                      <input required value={name ||""} onChange={e => setName(e.target.value)} className='form-control'></input>
-                      
+                      <input required value={name || ""} onChange={e => setName(e.target.value)} className='form-control'></input>
+
                     </div>
                   </div>
 
                   <div className='col-lg-12'>
                     <div className='form-group'>
                       <label>이메일</label>
-                      <input value={email ||""}  onChange={e => setEmail(e.target.value)} className='form-control'></input>
+                      <input value={email || ""} onChange={e => setEmail(e.target.value)} className='form-control'></input>
                     </div>
                   </div>
 
                   <div className='col-lg-12'>
                     <div className='form-group'>
                       <label>휴대번호</label>
-                      <input value={phone ||""}  onChange={e => setPhone(e.target.value)} className='form-control' ></input>
+                      <input value={phone || ""} onChange={e => setPhone(e.target.value)} className='form-control' ></input>
+                    </div>
+                  </div>
+
+                  <div className='col-lg-12'>
+                    <div className='form-group'>
+                      <label>작성일</label>
+                      <input value={date}  onChange={e => setDate(today)} className='form-control'  placeholder='아무키나 누르시면 [현재시각]을 가져옵니다.' ></input>
                     </div>
                   </div>
 
                   <div className='col-lg-12'>
                     <div className='form-check'>
-                      <input checked={active ||""} onChange={e => setActive(e.target.checked)} type="checkbox" className='form-check-input'></input>
-                      <label className='form-check-lable'>재직 확인</label>
+                      <input checked={active || ""} onChange={e => setActive(e.target.checked)} type="checkbox" className='form-check-input'></input>
+                      <label className='form-check-lable'>퇴사자</label>
                     </div>
                   </div>
 
