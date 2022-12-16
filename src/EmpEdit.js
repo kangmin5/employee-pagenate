@@ -43,11 +43,30 @@ const EmpEdit = () => {
     })
       .then(res => {
         alert('성공적으로 저장되었습니다.')
-        navigate('/')
+        navigate('/employee')
       }).catch(err => {
         console.error(err.message);
       })
   }
+
+  const RemoveFunction = (id) => {
+    if (window.confirm('정말 삭제 하시겠습니까?')) {
+        const empData = { id, name, email, phone,date, active };
+
+        fetch("http://localhost:8000/employee/" + id, {
+            method: "DELETE",
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(empData)
+        })
+            .then(res => {
+                alert('성공적으로 삭제되었습니다.')
+                // window.location.reload();
+                navigate('/employee')
+            }).catch(err => {
+                console.error(err.message);
+            })
+    }
+}
   return (
     <div>
       <div className='row'>
@@ -105,8 +124,10 @@ const EmpEdit = () => {
 
                   <div className='col-lg-12'>
                     <div className='form-group'>
+                      <Link to="/employee" className='btn btn-info '>리스Home</Link>
                       <button type='submit' className='btn btn-success'>저 장</button>
-                      <Link to="/" className='btn btn-danger'>나가기</Link>
+                      <button type='button' onClick={()=>RemoveFunction(id)} className='btn btn-danger'>삭 제</button>
+
                     </div>
                   </div>
                 </div>

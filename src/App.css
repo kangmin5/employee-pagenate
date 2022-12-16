@@ -17,6 +17,14 @@
   justify-content:center;
   align-items:center;
 }
+.trlist{
+
+}
+.trlist:hover{
+  background-color: gray;
+  cursor:pointer;
+  color: white;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
